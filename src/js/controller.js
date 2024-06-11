@@ -79,7 +79,6 @@ const controlAddBookmark = function () {
   // Add/Remove. bookmark
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
-  // console.log(model.state.recipe);
   // 2) Update recipe view
   recipeView.update(model.state.recipe);
 
@@ -115,7 +114,7 @@ const controlAddRecipe = async function (newRecipe) {
     window.history.pushState(null, '', `#${model.state.recipe.id}`);
     // window.history.back();
 
-    // Close Form Windoe
+    // Close Form Window
     setTimeout(() => {
       addRecipeView.toggleWindow();
     }, MODAL_CLOSE_SEC * 1000);
@@ -123,12 +122,6 @@ const controlAddRecipe = async function (newRecipe) {
     console.error(err);
     addRecipeView.renderError(err.message);
   }
-  // Upload new Recipe data
-  // console.log(newRecipe);
-};
-
-const newFeature = function () {
-  console.log('Congratulations For Coming so far');
 };
 
 const init = function () {
@@ -139,6 +132,5 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerBtnClick(controlPagination);
   addRecipeView.addHandlerUploadRecipe(controlAddRecipe);
-  newFeature();
 };
 init();
